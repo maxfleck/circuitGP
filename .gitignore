@@ -1,4 +1,6 @@
-archive*
+archi*
+archive
+archive/*
 basic_python_gp.ipynb
 gaussian_intro.ipynb
 kernel_post_1d.ipynb
