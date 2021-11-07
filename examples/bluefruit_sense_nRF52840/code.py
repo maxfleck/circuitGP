@@ -201,7 +201,11 @@ X = np.arange( 0.1, 1.1, 0.02 )*10
 # Noise free training data
 X_train = np.array([ 0.1, 0.3, 0.4,0.7 , 1])*10
 Y_train = np.sqrt(X_train)
+# Compute mean and covariance of the posterior distribution
+mu_sqrt, cov_sqrt = posterior_1d(X, X_train, Y_train, l=2.25, sigma_f=.5, noise=0.1)
+
 Y_train = np.sin(X_train)
+mu_sin, cov_sin = posterior_1d(X, X_train, Y_train, l=2.25, sigma_f=.5, noise=0.1)
 
 mean_diff = np.mean( np.diff(X_train) )
 min_diff = np.min( np.diff(X_train) )
@@ -210,8 +214,7 @@ std_diff = np.std( np.diff(X_train) )
 print(min_diff)
 print(mean_diff," +/- ",std_diff) # ???
 print(max_diff)
-# Compute mean and covariance of the posterior distribution
-mu_s, cov_s = posterior_1d(X, X_train, Y_train, l=2.25, sigma_f=.5, noise=0.1)
+
 
 #samples = sample_multivariante_normal_1d( mu_s, cov_s, epsilon=1e-5 )
 
@@ -223,9 +226,9 @@ def norm_samples(samples,lift=0.1):
     samples = samples/smax
     return samples
 
-samples1 = sample_multivariante_normal_1d( mu_s, cov_s, epsilon=1e-5 )
-samples2 = sample_multivariante_normal_1d( mu_s, cov_s, epsilon=1e-5 )
-samples3 = sample_multivariante_normal_1d( mu_s, cov_s, epsilon=1e-5 )
+samples1 = sample_multivariante_normal_1d( mu_sqrt, cov_sqrt, epsilon=1e-5 )
+samples2 = sample_multivariante_normal_1d( mu_sin, cov_sin, epsilon=1e-5 )
+samples3 = sample_multivariante_normal_1d( mu_sin, cov_sin, epsilon=1e-5 )
 samples1 = norm_samples(samples1)*256
 samples2 = norm_samples(samples2)*256
 samples3 = norm_samples(samples3)*256
