@@ -12,3 +12,7 @@ Examples and working .py-scripts can be found in the examples folder.
 - add/implement additional kernel functions
 - not sure but maybe 3D processes are possible (check ulab maximum number of dimensions)
 
+
+**GOAL**
+
+Bring something you might call creativity to small devices.
